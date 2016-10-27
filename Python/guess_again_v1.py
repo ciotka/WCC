@@ -39,9 +39,10 @@ def compare(numA, numB):
         return 'low'
 
 def play():
+    attempt_count = 1
 
     # Pick a secret number
-    secret_number = random.randint(1, 100)
+    secret_number = random.randint(10, 200)
 
     # When building your program, the following line will tell you what
     # the secret_number is x, this will make it easier to test the game.
@@ -58,14 +59,18 @@ def play():
     # Keep prompting until they get it correct
     # For every failed attempt, print 'Too x. Guess again.' where x is either 'high' or 'low'
     while guess != secret_number:
+        #added the bonus features to the stolen WCC solution
+        attempt_count = attempt_count + 1
         results = compare(guess, secret_number);
-        print('Too ' + results + 'Guess again.\n')
+        print('Too ' + results + '. ' + 'Guess again.\n')
         guess = get_guess()
+
+
 
 
     # Print conclusion
     print('You got it! The number was ' + str(secret_number))
-
+    print('It took you ' + str(attempt_count) + ' guesses.')
 # Run the game
 play()
 
